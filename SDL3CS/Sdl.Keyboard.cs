@@ -229,50 +229,26 @@ public static partial class Sdl
 	public static bool StartTextInput(in Window window) => Native.SDL_StartTextInput(window);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool StartTextInput(Ptr<Window> window) => Native.SDL_StartTextInput(window.Value);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool StartTextInputWithProperties(in Window window, PropertiesID props) => Native.SDL_StartTextInputWithProperties(window, props);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool StartTextInputWithProperties(Ptr<Window> window, PropertiesID props) => Native.SDL_StartTextInputWithProperties(window.Value, props);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TextInputActive(in Window window) => Native.SDL_TextInputActive(window);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool TextInputActive(Ptr<Window> window) => Native.SDL_TextInputActive(window.Value);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool StopTextInput(in Window window) => Native.SDL_StopTextInput(window);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool StopTextInput(Ptr<Window> window) => Native.SDL_StopTextInput(window.Value);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool ClearComposition(in Window window) => Native.SDL_ClearComposition(window);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool ClearComposition(Ptr<Window> window) => Native.SDL_ClearComposition(window.Value);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool SetTextInputArea(in Window window, in Rect rect, int cursor) => Native.SDL_SetTextInputArea(window, rect, cursor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool SetTextInputArea(Ptr<Window> window, in Rect rect, int cursor) => Native.SDL_SetTextInputArea(window.Value, rect, cursor);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool GetTextInputArea(in Window window, out Rect rect, out int cursor) => Native.SDL_GetTextInputArea(window, out rect, out cursor);
-	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool GetTextInputArea(Ptr<Window> window, out Rect rect, out int cursor) => Native.SDL_GetTextInputArea(window.Value, out rect, out cursor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool HasScreenKeyboardSupport() => Native.SDL_HasScreenKeyboardSupport();
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool ScreenKeyboardShown(in Window window) => Native.SDL_ScreenKeyboardShown(window);
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool ScreenKeyboardShown(Ptr<Window> window) => Native.SDL_ScreenKeyboardShown(window.Value);
 }

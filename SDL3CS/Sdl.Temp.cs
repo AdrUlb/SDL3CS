@@ -3,8 +3,7 @@
 // TODO
 public static partial class Sdl
 {
-
-	public readonly struct Surface { }
+	public readonly struct IOStream { }
 
 	public readonly struct SensorID
 	{
@@ -49,6 +48,7 @@ public static partial class Sdl
 	}
 
 	public enum PenInputFlags : uint { }
+	public enum BlendMode : uint { }
 	public enum PenAxis { }
 	public enum PowerState { }
 }

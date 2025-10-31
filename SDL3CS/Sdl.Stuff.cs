@@ -49,7 +49,7 @@ public static partial class Sdl
 		}
 	}
 
-	public unsafe readonly struct ArrayPtr<T>(T* ptr, int count) where T : unmanaged
+	private unsafe readonly struct ArrayPtr<T>(T* ptr, int count) where T : unmanaged
 	{
 		public readonly bool IsNull
 		{

@@ -213,35 +213,76 @@ public static partial class Sdl
 		public static partial bool SDL_CursorVisible();
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool HasMouse() => Native.SDL_HasMouse();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public unsafe static OwnedArrayPtr<MouseID> GetMice() => new(Native.SDL_GetMice(out var count), count);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string? GetMouseNameForID(MouseID instanceId) => Marshal.PtrToStringUTF8(Native.SDL_GetMouseNameForID(instanceId));
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Window> GetMouseFocus() => Native.SDL_GetMouseFocus();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MouseButtonFlags GetMouseState(out float x, out float y) => Native.SDL_GetMouseState(out x, out y);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MouseButtonFlags GetGlobalMouseState(out float x, out float y) => Native.SDL_GetGlobalMouseState(out x, out y);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MouseButtonFlags GetRelativeMouseState(out float x, out float y) => Native.SDL_GetRelativeMouseState(out x, out y);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void WarpMouseInWindow(in Window window, float x, float y) => Native.SDL_WarpMouseInWindow(window, x, y);
-	public static void WarpMouseInWindow(Ptr<Window> window, float x, float y) => Native.SDL_WarpMouseInWindow(window.Value, x, y);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool WarpMouseGlobal(float x, float y) => Native.SDL_WarpMouseGlobal(x, y);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool SetRelativeMouseTransform(MouseMotionTransformCallback callback, nint userdata) => Native.SDL_SetRelativeMouseTransform(callback, userdata);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool SetWindowRelativeMouseMode(in Window window, bool enabled) => Native.SDL_SetWindowRelativeMouseMode(window, enabled);
-	public static bool SetWindowRelativeMouseMode(Ptr<Window> window, bool enabled) => Native.SDL_SetWindowRelativeMouseMode(window.Value, enabled);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool GetWindowRelativeMouseMode(in Window window) => Native.SDL_GetWindowRelativeMouseMode(window);
-	public static bool GetWindowRelativeMouseMode(Ptr<Window> window) => Native.SDL_GetWindowRelativeMouseMode(window.Value);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CaptureMouse(bool enabled) => Native.SDL_CaptureMouse(enabled);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> CreateCursor(ReadOnlySpan<byte> data, ReadOnlySpan<byte> mask, int w, int h, int hotX, int hotY) => Native.SDL_CreateCursor(data, mask, w, h, hotX, hotY);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> CreateColorCursor(in Surface surface, int hotX, int hotY) => Native.SDL_CreateColorCursor(surface, hotX, hotY);
-	public static Ptr<Cursor> CreateColorCursor(Ptr<Surface> surface, int hotX, int hotY) => Native.SDL_CreateColorCursor(surface.Value, hotX, hotY);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> CreateAnimatedCursor(in CursorFrameInfo frames, int frameCount, int hotX, int hotY) => Native.SDL_CreateAnimatedCursor(frames, frameCount, hotX, hotY);
-	public static Ptr<Cursor> CreateAnimatedCursor(Ptr<CursorFrameInfo> frames, int frameCount, int hotX, int hotY) => Native.SDL_CreateAnimatedCursor(frames.Value, frameCount, hotX, hotY);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> CreateSystemCursor(SystemCursor id) => Native.SDL_CreateSystemCursor(id);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool SetCursor(in Cursor cursor) => Native.SDL_SetCursor(cursor);
-	public static bool SetCursor(Ptr<Cursor> cursor) => Native.SDL_SetCursor(cursor.Value);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> GetCursor() => Native.SDL_GetCursor();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Ptr<Cursor> GetDefaultCursor() => Native.SDL_GetDefaultCursor();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void DestroyCursor(in Cursor cursor) => Native.SDL_DestroyCursor(cursor);
-	public static void DestroyCursor(Ptr<Cursor> cursor) => Native.SDL_DestroyCursor(cursor.Value);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool ShowCursor() => Native.SDL_ShowCursor();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool HideCursor() => Native.SDL_HideCursor();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CursorVisible() => Native.SDL_CursorVisible();
 }
+
