@@ -147,12 +147,14 @@ public static partial class Sdl
 		private readonly uint value_;
 
 		public static implicit operator uint(DisplayID obj) => obj.value_;
+		public override int GetHashCode() => (int)value_;
 	}
 
 	public readonly struct WindowID
 	{
 		private readonly uint value_;
 		public static implicit operator uint(WindowID obj) => obj.value_;
+		public override int GetHashCode() => (int)value_;
 	}
 
 	public struct DisplayMode

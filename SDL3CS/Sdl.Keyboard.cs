@@ -30,6 +30,7 @@ public static partial class Sdl
 	{
 		private readonly uint value_;
 		public static implicit operator uint(KeyboardID obj) => obj.value_;
+		public override int GetHashCode() => value_.GetHashCode();
 	}
 
 	public static partial class Prop

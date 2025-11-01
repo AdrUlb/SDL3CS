@@ -1,18 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static SDL3CS.Sdl;
 
 namespace SDL3CS;
 
 public static partial class Sdl
 {
-	public readonly struct MouseID
-	{
-		private readonly uint value_;
-		public static implicit operator uint(MouseID obj) => obj.value_;
-	}
-
 	public enum SystemCursor
 	{
 		Default,
@@ -44,14 +36,6 @@ public static partial class Sdl
 		Flipped
 	}
 
-	public readonly struct Cursor { }
-
-	public readonly struct CursorFrameInfo
-	{
-		public readonly Ptr<Surface> Surface;
-		public readonly uint Duration;
-	}
-
 	public enum MouseButton : byte
 	{
 		Left = 1,
@@ -69,6 +53,21 @@ public static partial class Sdl
 		Right = 1 << 2,
 		X1 = 1 << 3,
 		X2 = 1 << 4,
+	}
+
+	public readonly struct MouseID
+	{
+		private readonly uint value_;
+		public static implicit operator uint(MouseID obj) => obj.value_;
+		public override int GetHashCode() => value_.GetHashCode();
+	}
+
+	public readonly struct Cursor { }
+
+	public readonly struct CursorFrameInfo
+	{
+		public readonly Ptr<Surface> Surface;
+		public readonly uint Duration;
 	}
 
 	public static uint DefineButtonMask(MouseButtonFlags button) => 1u << ((int)button - 1);

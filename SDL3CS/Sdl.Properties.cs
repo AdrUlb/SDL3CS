@@ -18,6 +18,7 @@ public static partial class Sdl
 	public readonly struct PropertiesID
 	{
 		private readonly uint value_;
+		public override int GetHashCode() => value_.GetHashCode();
 	}
 
 	public static partial class Prop
