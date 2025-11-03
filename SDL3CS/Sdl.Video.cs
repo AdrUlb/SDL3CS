@@ -176,12 +176,12 @@ public static partial class Sdl
 	public readonly struct GLContext
 	{
 		public static readonly GLContext Null = new(0);
-		private readonly nint value_;
-		private GLContext(nint value) => value_ = value;
+		public readonly nint Value;
+		private GLContext(nint value) => Value = value;
 		public readonly bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get => value_ == 0;
+			get => Value == 0;
 		}
 	}
 

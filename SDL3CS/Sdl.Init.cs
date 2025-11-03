@@ -5,6 +5,7 @@ namespace SDL3CS;
 
 public static partial class Sdl
 {
+	[Flags]
 	public enum InitFlags : uint
 	{
 		Audio = 0x00000010u,
