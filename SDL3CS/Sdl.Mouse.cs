@@ -55,11 +55,9 @@ public static partial class Sdl
 		X2 = 1 << 4,
 	}
 
-	public readonly struct MouseID
+	public readonly record struct MouseID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(MouseID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
 	public readonly struct Cursor { }

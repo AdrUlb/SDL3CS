@@ -171,7 +171,7 @@ public static partial class Sdl
 		public readonly uint UserType;
 
 		[FieldOffset(4)]
-		public readonly uint reserved;
+		private readonly uint reserved_;
 
 		[FieldOffset(8)]
 		public readonly ulong Timestamp;
@@ -180,9 +180,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct DisplayEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly DisplayID DisplayID;
 		public readonly int Data1;
 		public readonly int Data2;
@@ -191,9 +191,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct WindowEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly int Data1;
 		public readonly int Data2;
@@ -202,18 +202,18 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct KeyboardDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly KeyboardID Which;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct KeyboardEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly KeyboardID Which;
 		public readonly Scancode Scancode;
@@ -221,7 +221,7 @@ public static partial class Sdl
 		public readonly Keymod Mod;
 		public readonly ushort Raw;
 		private readonly byte down_;
-		private readonly byte depeat_;
+		private readonly byte repeat_;
 
 		public readonly bool Down
 		{
@@ -232,16 +232,16 @@ public static partial class Sdl
 		public readonly bool Repeat
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			get => depeat_ != 0;
+			get => repeat_ != 0;
 		}
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct TextEditingEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly uint Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		private readonly Ptr<byte> text_;
 		public readonly int Start;
@@ -257,9 +257,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct TextEditingCandidatesEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		private unsafe readonly Ptr<byte>* candidates_;
 		private readonly int numCandidates_;
@@ -285,9 +285,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct TextInputEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		private readonly Ptr<byte> text_;
 
@@ -301,18 +301,18 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct MouseDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly MouseID Which;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct MouseMotionEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly MouseID Which;
 		public readonly MouseButtonFlags State;
@@ -325,9 +325,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct MouseButtonEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly MouseID Which;
 		public readonly MouseButton Button;
@@ -347,9 +347,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct MouseWheelEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID windowID;
 		public readonly MouseID which;
 		public readonly float X;
@@ -364,9 +364,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyAxisEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly byte Axis;
 		private readonly byte padding1_;
@@ -379,9 +379,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyBallEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly byte Ball;
 		private readonly byte padding1_;
@@ -394,9 +394,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyHatEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID which;
 		public readonly byte Hat;
 		public readonly byte Value;
@@ -407,9 +407,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyButtonEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly byte Button;
 		private readonly byte down_;
@@ -426,18 +426,18 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct JoyBatteryEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly PowerState State;
 		public readonly int Percent;
@@ -446,9 +446,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct GamepadAxisEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly byte Axis;
 		private readonly byte padding1_;
@@ -461,9 +461,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct GamepadButtonEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly byte Button;
 		private readonly byte down_;
@@ -480,18 +480,18 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct GamepadDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct GamepadTouchpadEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly int Touchpad;
 		public readonly int Finger;
@@ -503,9 +503,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public struct GamepadSensorEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly JoystickID Which;
 		public readonly int Sensor;
 		private unsafe fixed float data_[3];
@@ -525,9 +525,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct AudioDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly AudioDeviceID Which;
 		private readonly byte recording_;
 		private readonly byte padding1_;
@@ -544,27 +544,27 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct CameraDeviceEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly CameraID Which;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct RenderEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct TouchFingerEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly TouchID TouchID;
 		public readonly FingerID FingerID;
 		public readonly float X;
@@ -578,9 +578,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PinchFingerEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly float Scale;
 		public readonly WindowID WindowID;
 	}
@@ -588,9 +588,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PenProximityEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly PenID Which;
 	}
@@ -598,9 +598,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PenMotionEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly PenID Which;
 		public readonly PenInputFlags PenState;
@@ -611,9 +611,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PenTouchEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly PenID Which;
 		public readonly PenInputFlags PenState;
@@ -638,9 +638,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PenButtonEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly PenID Which;
 		public readonly PenInputFlags PenState;
@@ -659,9 +659,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct PenAxisEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly PenID Which;
 		public readonly PenInputFlags PenState;
@@ -674,9 +674,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct DropEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly float X;
 		public readonly float Y;
@@ -700,9 +700,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct ClipboardEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		private readonly byte owner_;
 		private readonly int numMimeTypes_;
 		private unsafe readonly Ptr<byte>* mimeTypes_;
@@ -723,9 +723,9 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public struct SensorEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly SensorID Which;
 		public unsafe fixed float Data[6];
 		public readonly ulong SensorTimestamp;
@@ -734,17 +734,17 @@ public static partial class Sdl
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct QuitEvent
 	{
-		public readonly EventType Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct UserEvent
 	{
-		public readonly uint Type;
+		private readonly EventType type_;
 		private readonly uint reserved_;
-		public readonly ulong Timestamp;
+		private readonly ulong timestamp_;
 		public readonly WindowID WindowID;
 		public readonly int Code;
 		public readonly nint Data1;
@@ -756,6 +756,7 @@ public static partial class Sdl
 	{
 		[FieldOffset(0)] public readonly EventType Type;
 		[FieldOffset(0)] public readonly uint UserType;
+		[FieldOffset(8)] public readonly ulong Timestamp;
 		[FieldOffset(0)] public readonly CommonEvent Common;
 		[FieldOffset(0)] public readonly DisplayEvent Display;
 		[FieldOffset(0)] public readonly WindowEvent Window;

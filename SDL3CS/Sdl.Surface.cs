@@ -41,6 +41,7 @@ public static partial class Sdl
 		public readonly int Pitch;
 		public readonly nint Pixels;
 
+		// internal
 		private readonly int refcount;
 		private readonly nint reserved;
 	};

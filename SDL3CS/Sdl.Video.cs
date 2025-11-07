@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDL3CS;
@@ -142,19 +143,14 @@ public static partial class Sdl
 		LoseContext = 0x0001
 	}
 
-	public readonly struct DisplayID
+	public readonly record struct DisplayID
 	{
-		private readonly uint value_;
-
-		public static implicit operator uint(DisplayID obj) => obj.value_;
-		public override int GetHashCode() => (int)value_;
+		public readonly uint Value;
 	}
 
-	public readonly struct WindowID
+	public readonly record struct WindowID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(WindowID obj) => obj.value_;
-		public override int GetHashCode() => (int)value_;
+		public readonly uint Value;
 	}
 
 	public struct DisplayMode
@@ -173,48 +169,59 @@ public static partial class Sdl
 
 	public readonly struct Window { }
 
-	public readonly struct GLContext
+	public readonly record struct GLContext
 	{
 		public static readonly GLContext Null = new(0);
+		
 		public readonly nint Value;
+		
 		private GLContext(nint value) => Value = value;
-		public readonly bool IsNull
+		
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => Value == 0;
 		}
 	}
 
-	public readonly struct EGLDisplay
+	public readonly record struct EGLDisplay
 	{
 		public static readonly EGLDisplay Null = new(0);
+		
 		private readonly nint value_;
+		
 		private EGLDisplay(nint value) => value_ = value;
 
-		public readonly bool IsNull
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => value_ == 0;
 		}
 	}
 
-	public readonly struct EGLConfig
+	public readonly record struct EGLConfig
 	{
 		public static readonly EGLConfig Null = new(0);
+		
 		private readonly nint value_;
+		
 		private EGLConfig(nint value) => value_ = value;
-		public readonly bool IsNull
+		
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => value_ == 0;
 		}
 	}
 
-	public readonly struct EGLSurface
+	public readonly record struct EGLSurface
 	{
 		public static readonly EGLSurface Null = new(0);
+		
 		private readonly nint value_;
+		
 		private EGLSurface(nint value) => value_ = value;
+		
 		public readonly bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -222,12 +229,12 @@ public static partial class Sdl
 		}
 	}
 
-	public readonly struct EGLAttrib
+	public readonly record struct EGLAttrib
 	{
 		public readonly nint Value;
 	}
 
-	public readonly struct EGLint
+	public readonly record struct EGLint
 	{
 		private readonly int Value;
 	}
@@ -1052,7 +1059,6 @@ public static partial class Sdl
 		[return: MarshalAs(UnmanagedType.I1)]
 		public static partial bool SDL_GL_DestroyContext(GLContext context);
 	}
-
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static int GetNumVideoDrivers() => Native.SDL_GetNumVideoDrivers();

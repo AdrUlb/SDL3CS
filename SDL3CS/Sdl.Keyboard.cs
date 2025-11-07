@@ -26,11 +26,9 @@ public static partial class Sdl
 		NumberPasswordVisible
 	}
 
-	public readonly struct KeyboardID
+	public readonly record struct KeyboardID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(KeyboardID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
 	public static partial class Prop

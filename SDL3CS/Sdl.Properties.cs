@@ -15,10 +15,9 @@ public static partial class Sdl
 		Boolean
 	}
 
-	public readonly struct PropertiesID
+	public readonly record struct PropertiesID
 	{
-		private readonly uint value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
 	public static partial class Prop

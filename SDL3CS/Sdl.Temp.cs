@@ -5,53 +5,39 @@ public static partial class Sdl
 {
 	public readonly struct IOStream { }
 
-	public readonly struct SensorID
+	public readonly record struct SensorID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(SensorID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
-	public readonly struct PenID
+	public readonly record struct PenID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(PenID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
-	public readonly struct JoystickID
+	public readonly record struct JoystickID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(JoystickID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
-	public readonly struct AudioDeviceID
+	public readonly record struct AudioDeviceID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(AudioDeviceID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
-	public readonly struct CameraID
+	public readonly record struct CameraID
 	{
-		private readonly uint value_;
-		public static implicit operator uint(CameraID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly uint Value;
 	}
 
-	public readonly struct TouchID
+	public readonly record struct TouchID
 	{
-		private readonly ulong value_;
-		public static implicit operator ulong(TouchID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly ulong Value;
 	}
 
-	public readonly struct FingerID
+	public readonly record struct FingerID
 	{
-		private readonly ulong value_;
-		public static implicit operator ulong(FingerID obj) => obj.value_;
-		public override int GetHashCode() => value_.GetHashCode();
+		public readonly ulong Value;
 	}
 
 	public enum PenInputFlags : uint { }

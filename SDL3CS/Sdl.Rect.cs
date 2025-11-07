@@ -19,8 +19,10 @@ public static partial class Sdl
 
 	public struct Rect
 	{
-		public int X, Y;
-		public int Width, Height;
+		public int X;
+		public int Y;
+		public int Width;
+		public int Height;
 	}
 
 	public struct FRect

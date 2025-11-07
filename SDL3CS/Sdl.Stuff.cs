@@ -31,13 +31,14 @@ public static partial class Sdl
 	public unsafe readonly struct Ptr<T> where T : unmanaged
 	{
 		private readonly T* ptr_;
-		public readonly bool IsNull
+
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => ptr_ == null;
 		}
 
-		public readonly ref T Value
+		public ref T Value
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get
@@ -51,34 +52,34 @@ public static partial class Sdl
 
 	private unsafe readonly struct ArrayPtr<T>(T* ptr, int count) where T : unmanaged
 	{
-		public readonly bool IsNull
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => ptr == null;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public readonly Span<T> AsSpan() => IsNull ? throw new NullReferenceException() : new(ptr, count);
+		public Span<T> AsSpan() => IsNull ? throw new NullReferenceException() : new(ptr, count);
 	}
 
 	public unsafe readonly struct OwnedArrayPtr<T>(T* ptr, int count) : IDisposable where T : unmanaged
 	{
 		private readonly ArrayPtr<T> array_ = new(ptr, count);
 		private readonly SdlFreeHandle handle_ = new((nint)ptr);
-		public readonly int Count { get; } = count;
+		public int Count => count;
 
-		public readonly bool IsNull
+		public bool IsNull
 		{
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => array_.IsNull;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public readonly T* AsPointer() => ptr;
+		public T* AsPointer() => ptr;
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public readonly Span<T> AsSpan() => array_.AsSpan();
+		public Span<T> AsSpan() => array_.AsSpan();
 
-		public readonly void Dispose() => handle_.Dispose();
+		public void Dispose() => handle_.Dispose();
 	}
 }

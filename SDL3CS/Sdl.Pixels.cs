@@ -263,7 +263,7 @@ public static partial class Sdl
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public readonly unsafe struct Palette
+	public unsafe readonly struct Palette
 	{
 		private readonly int numColors_;
 		private readonly Color* colors_;
