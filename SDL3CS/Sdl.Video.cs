@@ -22,6 +22,7 @@ public static partial class Sdl
 		PortraitFlipped
 	}
 
+	[Flags]
 	public enum WindowFlags : ulong
 	{
 		Fullscreen = 0x0000000000000001,
