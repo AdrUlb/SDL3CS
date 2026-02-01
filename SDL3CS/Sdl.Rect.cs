@@ -17,20 +17,20 @@ public static partial class Sdl
 		public float Y;
 	}
 
-	public struct Rect
+	public struct Rect(int x, int y, int width, int height)
 	{
-		public int X;
-		public int Y;
-		public int Width;
-		public int Height;
+		public int X = x;
+		public int Y = y;
+		public int Width = width;
+		public int Height = height;
 	}
 
-	public struct FRect
+	public struct FRect(float x, float y, float width, float height)
 	{
-		public float X;
-		public float Y;
-		public float Width;
-		public float Height;
+		public float X = x;
+		public float Y = y;
+		public float Width = width;
+		public float Height = height;
 	}
 
 	private static partial class Native
